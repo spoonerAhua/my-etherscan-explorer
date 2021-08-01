@@ -226,7 +226,7 @@
                         <li class=li v-for="o in blocks">
                             <div class=img>
                                 <router-link class=mt20 v-bind:to='fragApi + "/block/" + o.height'>block {{ o.height }}</router-link>
-                                <div class=mt20>{{ timeConversion(msVmReady - o.timestamp) }} ago</div>
+                                <div class=mt20>{{ timeConversion(Date.now() - o.timestamp) }} ago</div>
                             </div>
                             <div class=right>
                                 Mined By
@@ -271,7 +271,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan=2> > {{timeConversion(msVmReady - o.timestamp)}} ago</td>
+                                        <td colspan=2> > {{timeConversion(Date.now() - o.timestamp)}} ago</td>
                                     </tr>
                                 </table>
                             </div>
@@ -362,12 +362,15 @@
                 // https://github.com/vuejs/vue/issues/5682
                 // "In 2.x a component's entire render function is called when it is updated."
                 return utility.timeConversion(ms);
+            },
+            refreshData(){
+                api.getBlock({ type: "latest" }, o => this.blocks = o);
+                api.getTx({ type: "latest" }, o => this.txs = o);
+                api.getMarketCap(o => this.market = o);
             }
         },
         mounted() {
-            api.getBlock({ type: "latest" }, o => this.blocks = o);
-            api.getTx({ type: "latest" }, o => this.txs = o);
-            api.getMarketCap(o => this.market = o);
+            setInterval( this.refreshData,1500);
 
             api.getTx("cnt_static", o => {
                 var i, arr = [], div = document.querySelector("#chart");
