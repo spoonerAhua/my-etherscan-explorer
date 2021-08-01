@@ -73,6 +73,7 @@ public class SyncToDatabaseTask {
             if (!transactions.isEmpty()) {
                 transactionMapper.insert(transactions);
             }
+
             blockMapper.insert(block);
 
             log.info("block {} sync succeeded", i);
