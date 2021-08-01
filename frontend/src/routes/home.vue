@@ -366,11 +366,12 @@
             refreshData(){
                 api.getBlock({ type: "latest" }, o => this.blocks = o);
                 api.getTx({ type: "latest" }, o => this.txs = o);
-                api.getMarketCap(o => this.market = o);
+                // api.getMarketCap(o => this.market = o);
+                setTimeout( this.refreshData,1500);
             }
         },
         mounted() {
-            setInterval( this.refreshData,1500);
+            setTimeout( this.refreshData,1500);
 
             api.getTx("cnt_static", o => {
                 var i, arr = [], div = document.querySelector("#chart");
