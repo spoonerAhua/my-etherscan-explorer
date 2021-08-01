@@ -328,7 +328,7 @@
                         // , type: "area"
                     }],
                     subtitle: {
-                        text: "数据来源：Ethereum"
+                        text: "数据来源：Turingchain"
                     },
                     title: {
                         text: "transactions"
