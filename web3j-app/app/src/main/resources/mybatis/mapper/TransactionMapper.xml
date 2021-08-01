@@ -36,7 +36,7 @@
     </select>
 
     <select id="top" resultType="transaction">
-        select * from transaction order by block_number desc, transaction_index desc
+        select * from transaction order by block_number desc, transaction_index desc LIMIT 10
     </select>
 
     <select id="count" resultType="java.lang.Long">
