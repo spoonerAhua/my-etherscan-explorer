@@ -9,7 +9,7 @@ module.exports = {
             name: "Mainnet",
             //url: "https://explorer.nebulas.io/main/api/"
             //url: "http://178.128.3.xx:8080/api/"
-            url: "http://localhost:8080/api/"
+            url: "http://39.105.18.23:8080/api/"
         },
         testnet: {
             name: "Testnet",
