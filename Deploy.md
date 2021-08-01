@@ -24,11 +24,16 @@ docker logs -f my-mysql
 
 # 运行 frontend
 ```
-docker run -d --name my-etherscan-explorer -v /my-eth/frontend:/usr/share/nginx/html:ro nginx:1.21.1
+cd /my-eth
+docker run -d --net host --name my-frontend -v /my-eth/frontend:/usr/share/nginx/html:ro nginx:1.21.1
 ```
 
 # 运行 backend
 ```
-docker run -d --name my-etherscan-explorer -v /my-eth/frontend:/usr/share/nginx/html:ro nginx:1.21.1
+apt -y install openjdk-8-jdk
 ```
 
+```
+cd /my-eth
+nohup java -jar web3j-app-1.0.0.jar &
+```
